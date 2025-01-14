@@ -1,10 +1,11 @@
+import logo from './alxlogo.jpg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <img src="alxlogo.jpg" className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>School dashboard</h1>
       </div>
       <div className="App-body">
