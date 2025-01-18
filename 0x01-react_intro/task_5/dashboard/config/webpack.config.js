@@ -1,41 +1,41 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'development',  // or 'production'
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    devServer: {
+        static: path.join(__dirname, 'dist'),  // Updated from contentBase
+        port: 8080,
+        open: true,
+        hot: true, 
     },
     module: {
         rules: [
             {
-                test: /\.js|\.jsx$/,        // Match both .js and .jsx files
-                exclude: /node_modules/,    // Exclude node_modules folder
-                use: {
-                    loader: 'babel-loader',   // Use babel-loader to transpile JS/JSX files
-                },
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader',
             },
             {
-                test: /\.css$/,            // Match CSS files
-                use: ['style-loader', 'css-loader'], // Use style-loader and css-loader for CSS files
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(jpg|png|gif)$/i, // Match image files
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
-                        loader: 'file-loader', // Use file-loader for images
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                        },
                     },
                 ],
             },
         ],
     },
-    resolve: {
-        extensions: ['.js', '.jsx'], // Resolve both .js and .jsx extensions
-    },
-    devServer: {
-        static: path.join(__dirname, 'dist'),
-        historyApiFallback: true,  // This allows for client-side routing
-        hot: true,  // Enable hot module replacement
-    },
 };
+
