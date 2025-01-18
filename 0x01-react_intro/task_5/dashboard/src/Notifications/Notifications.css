@@ -1,0 +1,15 @@
+.Notifications {
+  position: relative;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* Style for list items with default priority */
+[data-priority="default"] {
+  color: blue;
+}
+
+/* Style for list items with urgent priority */
+[data-priority="urgent"] {
+  color: red;
+}

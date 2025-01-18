@@ -1,35 +1,39 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-    mode: 'development',
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'dist'), // Use 'static' instead of 'contentBase'
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js|\.jsx$/,        // Match both .js and .jsx files
+        exclude: /node_modules/,    // Exclude node_modules folder
+        use: {
+          loader: 'babel-loader',   // Use babel-loader to transpile JS/JSX files
         },
-        hot: true,
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif|svg)$/,
-                use: ['image-webpack-loader'],
-            },
+      },
+      {
+        test: /\.css$/,            // Match CSS files
+        use: ['style-loader', 'css-loader'], // Use style-loader and css-loader for CSS files
+      },
+      {
+        test: /\.(jpg|png|gif)$/i, // Match image files
+        use: [
+          {
+            loader: 'file-loader', // Use file-loader for images
+          },
         ],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './dist/index.html',
-        }),
+      },
     ],
-    devtool: 'inline-source-map',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'], // Resolve both .js and .jsx extensions
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    hot: true,
+  },
 };
