@@ -8,6 +8,9 @@ function App() {
     <div className="App">
       {/* header */}
       <div className="App-header">
+        {/* notifications */}
+        <Notifications />
+
         <img src={logo} className="App-logo" alt="logo" />
         <h1>School dashboard</h1>
       </div>

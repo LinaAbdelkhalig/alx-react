@@ -13,12 +13,12 @@ root.render(
   </React.StrictMode>
 );
 
-// Render Notifications in the 'root-notifications' div
-const rootNotifications = ReactDOM.createRoot(
-  document.getElementById('root-notifications')
-);
-rootNotifications.render(
-  <React.StrictMode>
-    <Notifications />
-  </React.StrictMode>
-);
+// // Render Notifications in the 'root-notifications' div
+// const rootNotifications = ReactDOM.createRoot(
+//   document.getElementById('root-notifications')
+// );
+// rootNotifications.render(
+//   <React.StrictMode>
+//     <Notifications />
+//   </React.StrictMode>
+// );

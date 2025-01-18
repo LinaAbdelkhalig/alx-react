@@ -3,6 +3,9 @@ body {
   font-family: sans-serif;
 }
 
+.App-body {
+  margin-bottom: 10em;
+}
 .App-logo {
   width: 15em;
   display: inline-block;
@@ -25,7 +28,7 @@ body {
 
 .App-footer {
   border-top: 4px solid #e0354b;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 5em;
